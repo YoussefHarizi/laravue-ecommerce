@@ -6,13 +6,11 @@
         <!-- side bar -->
         <div class="flex-1">
             <!-- header bar -->
-            <header class="h-8 shadow bg-white">
-                header
-            </header>
+           <Topbar></Topbar>
             <!-- header bar -->
             <!-- main bar -->
-            <main>
-                main
+            <main class="p-6">
+                ok
                 <router-view></router-view>
 
             </main>
@@ -30,4 +28,5 @@ const {title}=defineProps({
     title:String
 })
 import { LockClosedIcon } from '@heroicons/vue/20/solid'
+import Topbar from "./Topbar.vue";
 </script>
