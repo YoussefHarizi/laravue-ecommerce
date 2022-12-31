@@ -1,6 +1,6 @@
 <template>
-    <header class="flex justify-between h-14 items-center shadow bg-white">
-        <button class="p-4 text-gray-700">
+    <header class="flex justify-between p-3 h-14 items-center shadow bg-white">
+        <button @click="emit('toggle-sidebar')" class="text-gray-700 flex justify-center items-center hover:bg-black/10 transition-colors rounded p-2">
             <Bars3Icon class="w-8"/>
         </button>
 
@@ -31,7 +31,7 @@
                             <MenuItem v-slot="{ active }">
                                 <button
                                     :class="[
-                  active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                  active ? 'bg-indigo-500 text-white' : 'text-gray-900',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
                                 >
@@ -51,7 +51,7 @@
                             <MenuItem v-slot="{ active }">
                                 <button
                                     :class="[
-                  active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                  active ? 'bg-indigo-500 text-white' : 'text-gray-900',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
                                 >
@@ -76,4 +76,5 @@
 import {Bars3Icon,UserIcon,ArrowRightOnRectangleIcon} from '@heroicons/vue/24/outline';
 import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
 import {ChevronDownIcon} from '@heroicons/vue/20/solid'
+const emit=defineEmits(['toggle-sidebar']);
 </script>

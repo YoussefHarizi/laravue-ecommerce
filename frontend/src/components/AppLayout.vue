@@ -2,15 +2,15 @@
 
     <div class="flex min-h-full">
         <!-- side bar -->
-       <Sidebar></Sidebar>
+       <Sidebar :class="opensidebar?'':'-ml-[200px]'"></Sidebar>
         <!-- side bar -->
         <div class="flex-1">
             <!-- header bar -->
-           <Topbar></Topbar>
+           <Topbar @toggle-sidebar="toggleSidebar"></Topbar>
             <!-- header bar -->
             <!-- main bar -->
             <main class="p-6">
-                ok
+
                 <router-view></router-view>
 
             </main>
@@ -29,4 +29,19 @@ const {title}=defineProps({
 })
 import { LockClosedIcon } from '@heroicons/vue/20/solid'
 import Topbar from "./Topbar.vue";
+import {ref,onMounted,onUnmounted} from 'vue';
+const opensidebar=ref(true);
+function toggleSidebar(){
+    opensidebar.value=!opensidebar.value;
+}
+onMounted(()=>{
+    responsiveWindow();
+    window.addEventListener('resize',responsiveWindow)
+})
+onUnmounted(()=>{
+    window.removeEventListener('resize',responsiveWindow)
+})
+function responsiveWindow(){
+    opensidebar.value=window.outerWidth>768;
+}
 </script>
