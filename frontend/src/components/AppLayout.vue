@@ -30,11 +30,14 @@ const {title}=defineProps({
 import { LockClosedIcon } from '@heroicons/vue/20/solid'
 import Topbar from "./Topbar.vue";
 import {ref,onMounted,onUnmounted} from 'vue';
+import store from "../store/index.js";
 const opensidebar=ref(true);
 function toggleSidebar(){
     opensidebar.value=!opensidebar.value;
 }
 onMounted(()=>{
+    store.dispatch('getCurrentUser')
+
     responsiveWindow();
     window.addEventListener('resize',responsiveWindow)
 })
